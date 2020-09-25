@@ -10,35 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_092028) do
-
-  create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_artists_on_user_id"
-  end
-
-  create_table "records", force: :cascade do |t|
-    t.string "title"
-    t.string "year"
-    t.integer "artist_id", null: false
-    t.integer "users_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_records_on_artist_id"
-    t.index ["users_id"], name: "index_records_on_users_id"
-  end
+ActiveRecord::Schema.define(version: 2020_09_24_133447) do
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password_digest", null: false
+    t.string "name"
+    t.string "email"
+    t.string "school_id"
+    t.integer "department_id"
+    t.string "sex"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password"
+    t.string "password_confirmation"
+    t.string "password_digest"
   end
 
-  add_foreign_key "artists", "users"
-  add_foreign_key "records", "artists"
-  add_foreign_key "records", "users", column: "users_id"
 end
